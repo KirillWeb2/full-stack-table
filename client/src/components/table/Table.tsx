@@ -22,7 +22,8 @@ const Table: FC<ITableComponent> = ({ rows }) => {
 
     const sort = (column: IHeader) => {
         if (column.value === "date") return
-
+        
+        // это состояние служит, для определения стадии сортировки (По возрастанию или убыванию)
         setHeaders(headers.map(i => {
             if (i.value === column.value) {
                 return { ...i, type: i.type === "asc" ? "desc" : "asc" }

@@ -18,6 +18,7 @@ const App: FC = () => {
     value: ""
   })
 
+  // хук, отправляющий запрос каждый раз, когда меняется query
   const { isLoading, max, rows } = useService(query);
 
   return (

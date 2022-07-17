@@ -11,14 +11,21 @@ interface IPaginationComponent {
 const Pagination: FC<IPaginationComponent> = ({ max }) => {
     const { query, setQuery } = useContext(ServiceContext)
 
+    // массив объектов 
     const [pagination, setPagination] = useState<IPagination[]>([])
 
+
     const createPagination = useCallback((query: IRequest) => {
+        // фукнция, которая принимает объект запроса
+        // на его основании строит массив пагинации
+
         const result = []
 
+        // определение минимума и максимума
         let min = query.page - 2 >= 1 ? query.page - 2 : 1
         let maximum = ((query.page + 2) * 10) <= max ? query.page + 2 : Math.ceil(max / 10)
 
+        // итерация от минимума, до максимума
         for (let i = min; i <= maximum; i++) {
             if (i === query.page) {
                 result.push({
@@ -48,10 +55,12 @@ const Pagination: FC<IPaginationComponent> = ({ max }) => {
         setQuery({ ...query, page: query.page + 1 })
     }
 
+    // мгновенный переход на страницу
     const paginationClick = (page: number) => setQuery({ ...query, page: page })
 
     useEffect(() => {
-        if(query) createPagination(query)
+        // следит за актуальным телом запроса и генерирует актуальную пагинацию
+        if (query) createPagination(query)
     }, [query, createPagination])
 
     return (

@@ -34,6 +34,11 @@ export const useService = (data: IRequest) => {
     }, [data, request]);
 
     return {
-        rows, isLoading, max
+        // столбцы 
+        rows,
+        // загрузка данных
+        isLoading,
+        // Максимальное число столбцов
+        max
     }
 };

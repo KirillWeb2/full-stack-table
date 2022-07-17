@@ -48,6 +48,7 @@ const Filtering: FC<IFilteringComponent> = ({ isLoading }) => {
         value: ""
     });
 
+    // если все поля заполнены
     const valid = !filters.searchColumn || !filters.type || !filters.value;
 
 
