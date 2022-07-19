@@ -85,7 +85,7 @@ const Filtering: FC<IFilteringComponent> = ({ isLoading }) => {
                     onChange={e => setFilters({ ...filters, searchColumn: e.target.value })}
                 >
                     <option value="">Select a column</option>
-                    {columns.map(i => <option key={i} value={i}>{i}</option>)}
+                    {columns.map(i => <option key={i} disabled={i === 'date'} value={i}>{i}</option>)}
                 </select>
                 <select
                     className='filters__select'
